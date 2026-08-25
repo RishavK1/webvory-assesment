@@ -61,6 +61,7 @@ def create_app() -> FastAPI:
         return RedirectResponse(url="/docs")
 
     @app.get("/health", tags=["System"], summary="Liveness probe")
+    @app.get("/api/health", tags=["System"], summary="Liveness probe")
     def health() -> dict[str, str]:
         return {"status": "ok", "app": settings.APP_NAME, "version": settings.APP_VERSION}
 
