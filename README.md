@@ -9,6 +9,10 @@
 
 A full-stack, enterprise-grade internal workspace and task tracking system built with **FastAPI** and **React 19 / Vite**. Webvory provides product and engineering teams with real-time delivery metrics, an interactive Kanban board with drag-and-drop, threaded task discussions, immutable activity audit trails, and resilient third-party staff synchronization.
 
+- 🌐 **Live Web Application:** [https://webvory-app.vercel.app](https://webvory-app.vercel.app)
+- 🔌 **Live Backend API:** [https://webvory-api.vercel.app](https://webvory-api.vercel.app)
+- 📖 **Interactive Swagger Documentation:** [https://webvory-api.vercel.app/docs](https://webvory-api.vercel.app/docs)
+
 ---
 
 ## Table of Contents

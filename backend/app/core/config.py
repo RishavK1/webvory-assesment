@@ -56,6 +56,7 @@ class Settings(BaseSettings):
     def cors_origins(self) -> list[str]:
         origins = [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
         if "*" not in origins:
+            origins.append("https://webvory-app.vercel.app")
             origins.append("https://frontend-nine-eta-48.vercel.app")
         return origins
 
