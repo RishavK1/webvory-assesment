@@ -54,11 +54,21 @@ class Settings(BaseSettings):
 
     @property
     def cors_origins(self) -> list[str]:
-        return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+        origins = [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+        if "*" not in origins:
+            origins.append("https://frontend-nine-eta-48.vercel.app")
+        return origins
+
+    @property
+    def database_url(self) -> str:
+        import os
+        if os.environ.get("VERCEL") and self.DATABASE_URL == "sqlite:///./webvory.db":
+            return "sqlite:////tmp/webvory.db"
+        return self.DATABASE_URL
 
     @property
     def is_sqlite(self) -> bool:
-        return self.DATABASE_URL.startswith("sqlite")
+        return self.database_url.startswith("sqlite")
 
 
 @lru_cache

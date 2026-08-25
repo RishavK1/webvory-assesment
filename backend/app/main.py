@@ -22,11 +22,13 @@ from app.utils.http_client import external_api_client
 async def lifespan(_app: FastAPI):
     tables = inspect(engine).get_table_names()
     if "tasks" not in tables:
-        print(
-            "\n  ⚠  Database is empty. Run:\n"
-            "       alembic upgrade head\n"
-            "       python -m app.seed\n"
-        )
+        try:
+            from app.core.database import Base
+            from app.seed import seed
+            Base.metadata.create_all(bind=engine)
+            seed()
+        except Exception as exc:
+            print(f"Database initialization: {exc}")
 
     yield
     await external_api_client.aclose()
