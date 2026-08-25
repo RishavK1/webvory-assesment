@@ -1,0 +1,26 @@
+# Pinned to the exact versions this project was developed and tested against.
+# Install with:  pip install -r requirements.txt
+
+# Web framework and ASGI server
+fastapi==0.141.1
+uvicorn[standard]==0.52.2
+
+# Database: ORM, migrations, drivers
+SQLAlchemy==2.0.52
+alembic==1.19.1
+# PostgreSQL driver. Unused on SQLite, but keeping it installed means
+# switching backends is only a DATABASE_URL change.
+psycopg[binary]==3.3.4
+
+# Validation and configuration
+pydantic==2.13.4
+pydantic-settings==2.15.0
+email-validator==2.3.0
+
+# Authentication
+PyJWT==2.13.0
+bcrypt==5.0.0
+python-multipart==0.0.32
+
+# Outbound HTTP for the external API integration
+httpx==0.28.1
